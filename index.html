@@ -1,535 +1,657 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth;">
-
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isaac Hayab</title>
-    <!-- Load Tailwind CSS -->
+    <title>Isaac Hayab | Fullstack & Web3 Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- CHANGED FONT TO ORBITRON for a high-tech, futuristic look -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+        
+        :root {
+            --bg-primary: #171717;
+            --accent-orange: #F25623;
+            --text-main: #DEDEDE;
+            --text-muted: #4D4D4D;
+        }
+
         body {
-            /* Applied 'Orbitron' to the entire body */
-            font-family: 'Orbitron', sans-serif;
-            /* LIGHT MODE: Very light gray background */
-            background-color: #e2e8f0;
-            /* Slightly darker than F0F`4F8 to show glass effect better */
-            /* Ensure enough content height for scrolling */
-            min-height: 250vh;
-            color: #1f2937;
-            /* Default text color set to dark for light mode */
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+        
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
         }
 
-        main section {
-            scroll-margin-top: 5rem;
-            /* Set a uniform, subtle light background image to emphasize the blur effect */
-            background-image: url('https://placehold.co/1200x800/e2e8f0/e2e8f0');
-            background-size: cover;
-            background-position: center;
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background-color: var(--accent-orange);
+            margin-left: 4px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
         }
 
-        /* Custom smooth scrolling for internal links (overrides default browser scroll) */
-        .smooth-scroll {
-            transition: all 0.5s ease-in-out;
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
-        /* --- Adaptive Positioning --- */
-
-        /* Base (Mobile): Fixed Bottom Center */
-        .adaptive-navbar {
-            position: fixed;
-            bottom: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            /* Max width ensures it remains a dock, even if screen is huge */
-            max-width: 24rem;
-            /* Adjusted for 5 icons */
-            width: 90%;
-            z-index: 50;
+        /* Status Ping Animation */
+        .status-ping {
+            position: relative;
+            display: flex;
+            height: 8px;
+            width: 8px;
         }
-
-        /* Medium/Desktop: Fixed Bottom Right */
-        @media (min-width: 768px) {
-            .adaptive-navbar {
-                bottom: 2rem;
-                right: 2rem;
-                left: auto;
-                /* Undo left positioning */
-                transform: translateX(0);
-                /* Undo transform positioning */
-                max-width: fit-content;
-                /* Only take up space needed for icons */
-                width: auto;
-            }
-        }
-
-        /* Ensure the canvas container takes up space */
-        #cube-container {
+        .status-ping-pulse {
+            animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+            position: absolute;
+            display: inline-flex;
+            height: 100%;
             width: 100%;
-            height: 400px;
-            /* Default height for mobile/small screens */
+            border-radius: 9999px;
+            background-color: var(--accent-orange);
+            opacity: 0.75;
+        }
+        .status-ping-dot {
+            position: relative;
+            display: inline-flex;
+            border-radius: 9999px;
+            height: 8px;
+            width: 8px;
+            background-color: var(--accent-orange);
         }
 
-        @media (min-width: 768px) {
-            #cube-container {
-                width: 50%;
-                height: 100%;
+        @keyframes ping {
+            75%, 100% {
+                transform: scale(2.5);
+                opacity: 0;
             }
+        }
+
+        .glass-nav {
+            background-color: rgba(23, 23, 23, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #262626;
+        }
+
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: #1a1a1a;
+            border: 1px solid #262626;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-orange);
+            transform: translateY(-4px);
+        }
+
+        .hidden-project {
+            display: none !important;
+        }
+
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(100%);
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        body.light-mode {
+            --bg-primary: #f0f2f5;
+            --text-main: #1a202c;
+            --text-muted: #718096;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+        }
+        body.light-mode .glass-nav {
+            background-color: rgba(240, 242, 245, 0.8);
+            border-bottom-color: #e2e8f0;
+        }
+        body.light-mode .project-card, body.light-mode .bg-\[\#1a1a1a\] {
+            background-color: #ffffff;
+            border-color: #e2e8f0;
+        }
+        body.light-mode .bg-\[\#121212\] {
+            background-color: #f7fafc;
+        }
+        body.light-mode .border-\[\#262626\] {
+            border-color: #e2e8f0;
+        }
+        body.light-mode .text-white {
+            color: #1a202c;
+        }
+        body.light-mode .text-\[\#DEDEDE\] {
+            color: #2d3748;
+        }
+        body.light-mode .text-\[\#DEDEDE\]\/60 {
+            color: rgba(45, 55, 72, 0.6);
+        }
+        body.light-mode .text-\[\#4D4D4D\] {
+            color: #a0aec0;
+        }
+         body.light-mode .text-\[\#171717\] {
+            color: #f0f2f5;
+        }
+        body.light-mode .bg-gradient-to-r, body.light-mode .from-\[\#F25623\], body.light-mode .to-\[\#DEDEDE\] {
+            background-image: none;
+            color: var(--accent-orange);
+        }
+        body.light-mode #mobile-menu {
+            background-color: var(--bg-primary);
         }
     </style>
 </head>
+<body class="selection:bg-[#F25623]/30">
 
-<body>
-
-    <!-- ADAPTIVE FLOATING DOCK CONTAINER - STRONG LIGHT GLASS EFFECT -->
-    <header class="adaptive-navbar">
-        <div
-            class="bg-white/80 backdrop-blur-xl rounded-full shadow-2xl transition-all duration-300 border border-gray-300 p-2 md:p-1">
-
-            <!-- NAVBAR: Icons are aligned in a row for mobile and desktop -->
-            <nav class="flex items-center justify-between space-x-1 md:space-x-2">
-
-                <!-- Home Icon -->
-                <a href="#home"
-                    class="relative flex items-center justify-center w-10 h-10 p-2 rounded-full text-gray-700 hover:text-gray-700 hover:bg-gray-200 transition duration-150 ease-in-out hover:-translate-y-1 group smooth-scroll"
-                    aria-label="Go to Home Section">
-                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                        <polyline points="9 22 9 12 15 12 15 22" />
-                    </svg>
-                    <!-- Tooltip -->
-                    <span class="absolute z-50 bottom-full mb-2 left-1/2 -translate-x-1/2 
-                                 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300
-                                 bg-gray-800 text-white text-xs px-2 py-1 rounded-md shadow-lg pointer-events-none">
-                        Home
-                    </span>
-                </a>
-
-                <!-- About Icon -->
-                <a href="#about"
-                    class="relative flex items-center justify-center w-10 h-10 p-2 rounded-full text-gray-700 hover:text-gray-700 hover:bg-gray-200 transition duration-150 ease-in-out hover:-translate-y-1 group smooth-scroll"
-                    aria-label="Go to About Section">
-                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                        <circle cx="12" cy="7" r="4" />
-                    </svg>
-                    <!-- Tooltip -->
-                    <span class="absolute z-50 bottom-full mb-2 left-1/2 -translate-x-1/2 
-                                 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300
-                                 bg-gray-800 text-white text-xs px-2 py-1 rounded-md shadow-lg pointer-events-none">
-                        About
-                    </span>
-                </a>
-
-                <!-- Projects Icon -->
-                <a href="#projects"
-                    class="relative flex items-center justify-center w-10 h-10 p-2 rounded-full text-gray-700 hover:text-gray-700 hover:bg-gray-200 transition duration-150 ease-in-out hover:-translate-y-1 group smooth-scroll"
-                    aria-label="Go to Projects Section">
-                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M4 22h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2Z" />
-                        <path d="M10 2v4" />
-                        <path d="M16 2v4" />
-                        <path d="M2 10h20" />
-                    </svg>
-                    <!-- Tooltip -->
-                    <span class="absolute z-50 bottom-full mb-2 left-1/2 -translate-x-1/2 
-                                 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300
-                                 bg-gray-800 text-white text-xs px-2 py-1 rounded-md shadow-lg pointer-events-none">
-                        Projects
-                    </span>
-                </a>
-
-                <!-- Skills Icon (Code) -->
-                <a href="#skills"
-                    class="relative flex items-center justify-center w-10 h-10 p-2 rounded-full text-gray-700 hover:text-gray-700 hover:bg-gray-200 transition duration-150 ease-in-out hover:-translate-y-1 group smooth-scroll"
-                    aria-label="Go to Skills Section">
-                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <polyline points="16 18 22 12 16 6" />
-                        <polyline points="8 6 2 12 8 18" />
-                    </svg>
-                    <!-- Tooltip -->
-                    <span class="absolute z-50 bottom-full mb-2 left-1/2 -translate-x-1/2 
-                                 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300
-                                 bg-gray-800 text-white text-xs px-2 py-1 rounded-md shadow-lg pointer-events-none">
-                        Skills
-                    </span>
-                </a>
-
-
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <!-- Home Section - HERO SECTION WITH 3D CUBE -->
-        <section id="home"
-            class="h-screen flex flex-col md:flex-row items-center justify-between bg-white/80 backdrop-blur-xl rounded-2xl shadow-2xl mb-16 border border-white/50 p-8">
-
-            <!-- Text Content (Left Aligned) -->
-            <div class="md:w-1/2 w-full text-center md:text-left p-4">
-                <!-- 1. Name in Bold -->
-                <h1 class="text-6xl font-extrabold text-gray-900 mb-2">Isaac Hayab</h1>
-
-                <!-- 2. Title Below Name -->
-                <p class="text-2xl text-gray-700 font-semibold mb-6">Backend Engineer & Web3 Developer</p>
-
-                <!-- 3. Description -->
-                <p class="text-xl text-gray-700 max-w-2xl">
-                    Specializing in <b>Node.js (Express)</b>, <b>MongoDB</b>, and <b>AWS</b>. Focused on building scalable backend systems and decentralized applications.
-                </p>
-
-                <!-- 4. Download Resume Button -->
-                <div class="mt-8">
-                    <a href="resume.pdf" download
-                        class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                        Download Resume
-                    </a>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-6">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-[#F25623] rounded flex items-center justify-center">
+                    <img src="favicon.svg" alt="Logo" class="w-full h-full p-1">
                 </div>
-
-                <!-- Social Media Links -->
-                <div class="mt-6 flex justify-center md:justify-start space-x-6">
-                    <a href="mailto:isaachayab0@gmail.com"
-                        class="text-gray-500 hover:text-gray-700 transition duration-150 ease-in-out hover:-translate-y-1">
-                        <span class="sr-only">Email</span>
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
-                        </svg>
-                    </a>
-                    <a href="https://wa.me/2347076225974"
-                        class="text-gray-500 hover:text-gray-700 transition duration-150 ease-in-out hover:-translate-y-1">
-                        <span class="sr-only">WhatsApp</span>
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.38 1.25 4.85L2 22l5.25-1.38c1.47.79 3.1 1.25 4.85 1.25 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.09c-1.5 0-2.93-.4-4.19-1.13l-.3-.18-3.12.82.83-3.04-.2-.32a8.19 8.19 0 01-1.26-4.34c0-4.53 3.69-8.21 8.21-8.21 4.53 0 8.21 3.69 8.21 8.21s-3.68 8.21-8.21 8.21zm4.49-5.45c-.25-.12-1.47-.72-1.7-.81-.22-.08-.38-.12-.54.12-.16.25-.64.81-.79.97-.15.16-.3.18-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.66-1.22-1.47-1.36-1.72-.15-.25-.02-.38.1-.51.11-.11.25-.28.38-.42.12-.15.16-.25.25-.42.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42-.15 0-.3.02-.46.02-.16 0-.42.06-.64.3.22.25-.87.83-1.02 2.04-.15 1.2.64 2.39.74 2.55.1.16 1.47 2.26 3.55 3.14.5.22.9.35 1.2.45.5.15.95.13 1.3.08.4-.04 1.25-.51 1.42-.99.18-.48.18-.9.13-1s-.24-.22-.5-.35z" />
-                        </svg>
-                    </a>
-                    <a href="https://github.com/ayo-69"
-                        class="text-gray-500 hover:text-gray-700 transition duration-150 ease-in-out hover:-translate-y-1">
-                        <span class="sr-only">GitHub</span>
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd"
-                                d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                    <a href="https://twitter.com/isaac_hayab"
-                        class="text-gray-500 hover:text-gray-700 transition duration-150 ease-in-out hover:-translate-y-1">
-                        <span class="sr-only">X (formerly Twitter)</span>
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                        </svg>
-                    </a>
-                </div>
+                <span class="font-mono font-bold tracking-tighter text-xl text-white uppercase">ISAAC HAYAB</span>
             </div>
-
-            <!-- 3D Cube Container (Right Side) -->
-            <div id="cube-container" class="md:w-1/2 w-full mt-8 md:mt-0 flex items-center justify-center">
-                <!-- Three.js will inject the canvas here -->
-            </div>
-        </section>
-
-        <!-- About Section - NEW GLASS SECTION -->
-        <section id="about"
-            class="min-h-[70vh] flex flex-col justify-center bg-white/80 backdrop-blur-xl p-10 rounded-2xl shadow-2xl mb-16 border border-white/50">
-            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b pb-2">About Isaac</h2>
-            <div class="space-y-6 text-lg text-gray-700 max-w-3xl">
-                <p>I’m a <b>Backend Engineer</b> with hands-on experience building and deploying RESTful APIs using <b>Node.js (Express)</b> and <b>MongoDB</b>. I specialize in authentication, role-based access control, API design, and backend architecture.</p>
-                <p>My expertise extends to <b>Golang</b> and cloud platforms like <b>AWS (EC2, S3)</b>, <b>Railway</b>, <b>Render</b>, and <b>Fly.io</b>. I have a strong foundation in building scalable backend systems and ensuring production-ready development.</p>
-                <p>Beyond traditional backend engineering, I am also a <b>Web3 Developer</b> with experience in building secure escrow platforms, writing <b>Solidity</b> smart contracts, and integrating blockchain APIs for seamless user experiences.</p>
-            </div>
-        </section>
-
-        <!-- Projects Section - NOW GLASS -->
-        <section id="projects"
-            class="min-h-[120vh] bg-white/80 backdrop-blur-xl p-10 rounded-2xl shadow-2xl mb-16 border border-white/50">
-            <h2 class="text-4xl font-bold text-gray-800 mb-8 border-b pb-2">Featured Projects</h2>
             
-            <div class="space-y-12">
-                <!-- Project Card 1: Real-time Chat Service -->
-                <div class="p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <h3 class="text-2xl font-bold text-gray-900">Real-time Chat Service</h3>
-                    <p class="mt-2 text-gray-700">Built a real-time chat service with <b>WebSockets</b>, <b>MongoDB</b>, and <b>AWS EC2</b> for high concurrency. Designed for scalability and low latency communication.</p>
-                </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest text-[#4D4D4D]">
+                <a href="#about" class="hover:text-[#F25623] transition-colors flex items-center"><i class="fas fa-layer-group mr-2"></i>Stack</a>
+                <a href="#projects" class="hover:text-[#F25623] transition-colors flex items-center"><i class="fas fa-briefcase mr-2"></i>Portfolio</a>
+                <a href="#contact" class="hover:text-[#F25623] transition-colors flex items-center"><i class="fas fa-id-card mr-2"></i>Contact</a>
+                <button id="theme-toggle" class="theme-toggle-btn text-xl text-[#4D4D4D] hover:text-[#F25623] transition-colors">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
 
-                <!-- Project Card 2: Expense Tracker API -->
-                <div class="p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <h3 class="text-2xl font-bold text-gray-800">Expense Tracker API</h3>
-                    <p class="mt-2 text-gray-700">Developed a robust API with <b>JWT auth</b>, <b>RBAC</b> (Role-Based Access Control), <b>Redis caching</b>, and optimized database queries to ensure performance and security.</p>
-                </div>
+            <button id="menu-toggle" class="md:hidden text-[#DEDEDE] text-2xl focus:outline-none">
+                <i class="fas fa-bars-staggered"></i>
+            </button>
+        </div>
+    </nav>
 
-                <!-- Project Card 3: Secure Escrow Platform -->
-                <div class="p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <h3 class="text-2xl font-bold text-gray-900">Secure Escrow Platform</h3>
-                    <p class="mt-2 text-gray-700">A decentralized platform supporting crypto and x402 payments. Implemented <b>Solidity smart contracts</b> for automated fund release and dispute handling, with MetaMask integration.</p>
-                </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-[#171717] flex flex-col items-center justify-center space-y-8 md:hidden">
+        <button id="close-menu" class="absolute top-8 right-8 text-[#DEDEDE] text-3xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#about" class="mobile-link text-3xl font-bold text-[#DEDEDE] hover:text-[#F25623] uppercase flex items-center"><i class="fas fa-layer-group mr-4"></i>Stack</a>
+        <a href="#projects" class="mobile-link text-3xl font-bold text-[#DEDEDE] hover:text-[#F25623] uppercase flex items-center"><i class="fas fa-briefcase mr-4"></i>Portfolio</a>
+        <a href="#contact" class="mobile-link text-3xl font-bold text-[#DEDEDE] hover:text-[#F25623] uppercase flex items-center"><i class="fas fa-id-card mr-4"></i>Contact</a>
+        <button id="theme-toggle-mobile" class="theme-toggle-btn text-3xl text-[#DEDEDE] hover:text-[#F25623] transition-colors">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
 
-                <!-- Project Card 4: E-Commerce Platform API -->
-                <div class="p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <h3 class="text-2xl font-bold text-gray-900">E-Commerce Platform API</h3>
-                    <p class="mt-2 text-gray-700">Built a full RESTful backend supporting catalog management, user roles, cart operations, and order tracking for e-commerce applications. Built with <b>Node.js</b> and <b>Express</b>.</p>
-                </div>
+    <!-- About Me Section -->
+    <section id="aboutme" class="pt-32 pb-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="inline-flex items-center space-x-3 px-3 py-1 rounded-full bg-[#1a1a1a] border border-[#262626] text-xs font-mono text-[#F25623] mb-6">
+                <span class="status-ping">
+                    <span class="status-ping-pulse"></span>
+                    <span class="status-ping-dot"></span>
+                </span>
+                <span>Available for Web3 & Node.js Projects</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                Software Engineer <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F25623] to-[#DEDEDE]">
+                    & Web3 Developer
+                </span>
+            </h1>
+            
+            <p class="max-w-2xl text-lg text-[#DEDEDE] opacity-80 mb-10 leading-relaxed">
+                I build robust Node.js backends and decentralized systems. 
+                CS student passionate about mathematics, business building, and shipping clean code using Ubuntu & Helix.
+            </p>
 
-                <!-- Project Card 5: Cloud Storage Backend -->
-                <div class="p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <h3 class="text-2xl font-bold text-gray-900">Cloud Storage Backend</h3>
-                    <p class="mt-2 text-gray-700">Engineered a Dropbox-style file storage backend using <b>Go</b>. Features include secure file uploads, chunked transfer encoding for large files, and metadata management.</p>
+            <a href="Isaac Hayab CV.pdf" download class="inline-block bg-[#F25623] text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-opacity-90 transition-colors mb-10">
+                Download Resume <i class="fas fa-download ml-2"></i>
+            </a>
+
+            <!-- Terminal Mockup -->
+            <div class="bg-[#121212] border border-[#262626] rounded-lg overflow-hidden shadow-2xl max-w-2xl">
+                <div class="bg-[#1a1a1a] px-4 py-2 flex items-center space-x-2 border-b border-[#262626]">
+                    <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                    <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                    <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                    <span class="ml-4 text-xs font-mono text-[#4D4D4D]">zeke@ubuntu:~/dev/projects — hx</span>
+                </div>
+                <div class="p-6 font-mono text-sm">
+                    <div class="flex items-center">
+                        <span class="text-[#F25623] mr-2">λ</span>
+                        <span id="terminal-text"></span>
+                        <span class="terminal-cursor"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stack Section -->
+    <section id="about" class="py-20 px-6 bg-[#121212]">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-white text-center mb-12">My Tech Stack</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Backend Column -->
+                <div class="bg-[#1a1a1a] border border-[#262626] rounded-lg p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6 text-center text-[#F25623]">Backend</h3>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-lg font-bold text-white mb-4">Languages</h4>
+                            <ul class="space-y-2 text-[#DEDEDE]/60">
+                                <li class="flex items-center space-x-2"><i class="fab fa-node-js"></i><span>Node.js / TypeScript</span></li>
+                                <li class="flex items-center space-x-2"><i class="fab fa-python"></i><span>Python</span></li>
+                                <li class="flex items-center space-x-2"><i class="fab fa-golang"></i><span>Go</span></li>
+                                 <li class="flex items-center space-x-2"><i class="fas fa-c"></i><span>C++</span></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white mb-4">Frameworks & Libraries</h4>
+                            <ul class="space-y-2 text-[#DEDEDE]/60">
+                                <li>Express.js, NestJS</li>
+                                <li>Gin, cpp-httplib</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white mb-4">Databases</h4>
+                            <ul class="space-y-2 text-[#DEDEDE]/60">
+                                 <li class="flex items-center space-x-2"><i class="fas fa-database"></i><span>PostgreSQL, MongoDB, Redis</span></li>
+                            </ul>
+                        </div>
+                         <div>
+                            <h4 class="text-lg font-bold text-white mb-4">Other</h4>
+                            <ul class="space-y-2 text-[#DEDEDE]/60">
+                                <li class="flex items-center space-x-2"><i class="fab fa-docker"></i><span>Docker, RESTful APIs, gRPC</span></li>
+                                <li class="flex items-center space-x-2"><i class="fab fa-ethereum"></i><span>Solidity, Web3</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Frontend Column -->
+                <div class="bg-[#1a1a1a] border border-[#262626] rounded-lg p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6 text-center">Frontend</h3>
+                     <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-lg font-bold text-white mb-4">Languages</h4>
+                            <ul class="space-y-2 text-[#DEDEDE]/60">
+                                <li class="flex items-center space-x-2"><i class="fab fa-js"></i><span>JavaScript</span></li>
+                                 <li class="flex items-center space-x-2"><i class="fab fa-html5"></i><span>HTML</span></li>
+                                  <li class="flex items-center space-x-2"><i class="fab fa-css3-alt"></i><span>CSS</span></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white mb-4">Frameworks & Libraries</h4>
+                            <ul class="space-y-2 text-[#DEDEDE]/60">
+                                <li class="flex items-center space-x-2"><i class="fab fa-react"></i><span>React, Next.js</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-2">Technical Portfolio</h2>
+                    <p class="text-[#4D4D4D]">A collection of systems, APIs, and decentralized tools.</p>
+                </div>
+                <div id="filter-container" class="flex flex-wrap bg-[#121212] p-1 rounded-lg border border-[#262626] font-mono text-xs gap-1">
+                    <button data-filter="featured" class="filter-btn px-4 py-2 rounded-md transition-all active-btn bg-[#F25623] text-[#171717] font-bold uppercase">featured</button>
+                    <button data-filter="all" class="filter-btn px-4 py-2 rounded-md transition-all text-[#4D4D4D] hover:text-white uppercase">all</button>
+                    <button data-filter="node" class="filter-btn px-4 py-2 rounded-md transition-all text-[#4D4D4D] hover:text-white uppercase">node.js</button>
+                    <button data-filter="web3" class="filter-btn px-4 py-2 rounded-md transition-all text-[#4D4D4D] hover:text-white uppercase">web3</button>
+                    <button data-filter="systems" class="filter-btn px-4 py-2 rounded-md transition-all text-[#4D4D4D] hover:text-white uppercase">systems</button>
                 </div>
             </div>
 
-        </section>
-
-        <!-- Skills Section - NOW GLASS -->
-        <section id="skills"
-            class="min-h-[100vh] bg-white/80 backdrop-blur-xl p-10 rounded-2xl shadow-2xl mb-16 border border-white/50 ">
-            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b pb-2">Core Skills</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <!-- Skill Card 1 - NOW GLASS -->
-                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md border-t-4 border-gray-500 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <p class="text-2xl font-semibold text-gray-900 mb-1">Backend</p>
-                    <p class="text-base text-gray-600">Go, JavaScript, TypeScript, Express.js, Gin</p>
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project: EduTrackr Backend -->
+                <div class="project-card p-8 rounded-2xl flex flex-col justify-between" data-category="featured node">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="text-[#F25623]"><i class="fas fa-graduation-cap text-2xl"></i></div>
+                            <span class="text-[9px] text-[#F25623] border border-[#F25623]/30 px-2 py-0.5 rounded font-mono uppercase">Featured</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 uppercase"><a href="https://github.com/naiih001/edutrackr-backend" target="_blank" rel="noopener noreferrer">EduTrackr Backend</a></h3>
+                        <p class="text-[#DEDEDE]/60 text-sm mb-6">A TypeScript and Express.js API for managing student grades, authentication, and records, with MongoDB for data storage and Swagger for API documentation. This full-featured educational tool with deployment focus can stand out as a real-world backend application, especially if you add metrics like user handling capacity.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[10px] uppercase font-mono text-[#4D4D4D]">
+                        <span>TypeScript</span> <span>Express.js</span> <span>MongoDB</span> <span>Swagger</span> <span>RESTful API</span> <span>Authentication</span> <span>CRUD Operations</span> <span>Deployment</span>
+                    </div>
                 </div>
 
-                <!-- Skill Card 2 - NOW GLASS -->
-                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md border-t-4 border-gray-500 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <p class="text-2xl font-semibold text-gray-900 mb-1">Databases</p>
-                    <p class="text-base text-gray-600">MongoDB, PostgreSQL, MySQL, Redis</p>
+                <!-- Project: E-commerce Backend -->
+                <div class="project-card p-8 rounded-2xl flex flex-col justify-between" data-category="featured systems">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="text-[#F25623]"><i class="fas fa-shopping-cart text-2xl"></i></div>
+                            <span class="text-[9px] text-[#F25623] border border-[#F25623]/30 px-2 py-0.5 rounded font-mono uppercase">Featured</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 uppercase"><a href="https://github.com/naiih001/e-commerce-backend" target="_blank" rel="noopener noreferrer">E-commerce Backend</a></h3>
+                        <p class="text-[#DEDEDE]/60 text-sm mb-6">A RESTful API built with Go and the Gin framework, handling user authentication, product management, orders, and integration with PostgreSQL for a performant and scalable online store backend. This project mimics industry-standard e-commerce systems, making it a strong feature for portfolios targeting web dev roles.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[10px] uppercase font-mono text-[#4D4D4D]">
+                        <span>Go</span> <span>Gin Framework</span> <span>PostgreSQL</span> <span>RESTful API</span> <span>Authentication</span> <span>Database Integration</span> <span>Scalability</span> <span>Error Handling</span>
+                    </div>
                 </div>
 
-                <!-- Skill Card 3 - NOW GLASS -->
-                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md border-t-4 border-gray-500 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <p class="text-2xl font-semibold text-gray-900 mb-1">API & Server Architecture</p>
-                    <p class="text-base text-gray-600">API Design & Development, Server Performance & Scalability,
-                        Microservices</p>
+                <!-- Project: CPP Notes API -->
+                <div class="project-card p-8 rounded-2xl flex flex-col justify-between" data-category="systems">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="text-[#F25623]"><i class="fas fa-sticky-note text-2xl"></i></div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 uppercase"><a href="https://github.com/naiih001/cpp-notes-api" target="_blank" rel="noopener noreferrer">CPP Notes API</a></h3>
+                        <p class="text-[#DEDEDE]/60 text-sm mb-6">A simple note-taking API developed using cpp-httplib in C++, focusing on HTTP request handling and basic CRUD functionality for notes storage and retrieval.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[10px] uppercase font-mono text-[#4D4D4D]">
+                        <span>C++</span> <span>cpp-httplib</span> <span>HTTP Server</span> <span>API Development</span> <span>CRUD</span> <span>Systems Programming</span>
+                    </div>
                 </div>
 
-                <!-- Skill Card 4 - NOW GLASS -->
-                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md border-t-4 border-gray-500 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <p class="text-2xl font-semibold text-gray-900 mb-1">DevOps & Cloud</p>
-                    <p class="text-base text-gray-600">AWS (EC2, S3), Docker, CI/CD, Railway, Render, Fly.io, Linux</p>
+                <!-- Project: Blogging Platform -->
+                <div class="project-card p-8 rounded-2xl flex flex-col justify-between" data-category="systems">
+                    <div>
+                        <div class="text-[#F25623] mb-4"><i class="fas fa-blog text-2xl"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-2 uppercase"><a href="https://github.com/naiih001/blogging-platform" target="_blank" rel="noopener noreferrer">Blogging Platform</a></h3>
+                        <p class="text-[#DEDEDE]/60 text-sm mb-6">A backend service in Go for a blogging platform, managing user posts, comments, and content storage with database operations, emphasizing concurrency and efficient data handling.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[10px] uppercase font-mono text-[#4D4D4D]">
+                        <span>Go</span> <span>Goroutines</span> <span>Database Management</span> <span>Concurrency</span> <span>Content Management System</span> <span>RESTful Endpoints</span>
+                    </div>
                 </div>
 
-                <!-- Skill Card 5 - NOW GLASS -->
-                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md border-t-4 border-gray-500 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <p class="text-2xl font-semibold text-gray-900 mb-1">Frontend</p>
-                    <p class="text-base text-gray-600">React, Next.js, Tailwind CSS, Zustand, Material UI</p>
+                <!-- Project: TCP Server -->
+                <div class="project-card p-8 rounded-2xl flex flex-col justify-between" data-category="featured systems">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="text-[#F25623]"><i class="fas fa-server text-2xl"></i></div>
+                            <span class="text-[9px] text-[#F25623] border border-[#F25623]/30 px-2 py-0.5 rounded font-mono uppercase">Featured</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 uppercase"><a href="https://github.com/naiih001/tcp-server" target="_blank" rel="noopener noreferrer">TCP Server</a></h3>
+                        <p class="text-[#DEDEDE]/60 text-sm mb-6">A concurrent TCP server in C++ that handles multiple client connections using std::thread and mutexes, with features for request processing, thread synchronization, and resource management. It showcases networking fundamentals and multithreading, impressive for building scalable servers at your level.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[10px] uppercase font-mono text-[#4D4D4D]">
+                        <span>C++</span> <span>TCP Networking</span> <span>Concurrency</span> <span>Multithreading</span> <span>Mutexes</span> <span>Synchronization</span> <span>Socket Programming</span>
+                    </div>
                 </div>
 
-                <!-- Skill Card 6 - NOW GLASS -->
-                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md border-t-4 border-gray-500 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <p class="text-2xl font-semibold text-gray-900 mb-1">Web3</p>
-                    <p class="text-base text-gray-600">Solidity, Foundry, Hardhat, Ethers.js, wagmi, rainbowkit</p>
+                <!-- Project: Trading Bot -->
+                <div class="project-card p-8 rounded-2xl flex flex-col justify-between" data-category="featured systems web3">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="text-[#F25623]"><i class="fas fa-chart-line text-2xl"></i></div>
+                            <span class="text-[9px] text-[#F25623] border border-[#F25623]/30 px-2 py-0.5 rounded font-mono uppercase">Featured</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 uppercase"><a href="https://github.com/naiih001/trading-bot" target="_blank" rel="noopener noreferrer">Trading Bot</a></h3>
+                        <p class="text-[#DEDEDE]/60 text-sm mb-6">A Go-based trading bot for back-testing strategies on historical price data, featuring a simulated exchange, SMA crossover strategy, risk management, and trade logging. This project demonstrates algorithmic trading concepts and could stand out by showing practical application of backend logic to financial simulations, which is advanced for a sophomore.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[10px] uppercase font-mono text-[#4D4D4D]">
+                        <span>Go</span> <span>Backtesting Engine</span> <span>Simulated Exchange</span> <span>SMA Strategy</span> <span>Risk Management</span> <span>CSV Data Handling</span> <span>Docker</span> <span>Concurrency</span>
+                    </div>
                 </div>
 
-                <!-- Skill Card 7 - NOW GLASS -->
-                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md border-t-4 border-gray-500 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <p class="text-2xl font-semibold text-gray-900 mb-1">General Programming & CS Concepts</p>
-                    <p class="text-base text-gray-600">Clean Code, Unit & Integration Testing, API Design &
-                        Documentation, Event-Driven Architecture</p>
+                <!-- Project: Expense Tracker -->
+                <div class="project-card p-8 rounded-2xl flex flex-col justify-between" data-category="systems">
+                    <div>
+                        <div class="text-[#F25623] mb-4"><i class="fas fa-wallet text-2xl"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-2 uppercase"><a href="https://github.com/naiih001/expense-tracker" target="_blank" rel="noopener noreferrer">Expense Tracker</a></h3>
+                        <p class="text-[#DEDEDE]/60 text-sm mb-6">A RESTful API in Go using Gin for managing personal expenses, budgets, and categories, with JWT authentication, PostgreSQL integration via GORM, optional Redis caching, and full CRUD operations for secure, user-specific data handling.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[10px] uppercase font-mono text-[#4D4D4D]">
+                        <span>Go</span> <span>Gin Framework</span> <span>PostgreSQL</span> <span>GORM</span> <span>JWT Authentication</span> <span>Redis Caching</span> <span>RESTful API</span> <span>CRUD Operations</span> <span>Docker</span>
+                    </div>
                 </div>
 
-                <!-- Skill Card 8 - NOW GLASS -->
-                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md border-t-4 border-gray-500 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <p class="text-2xl font-semibold text-gray-900 mb-1">Curiosity + Learning Drive</p>
-                    <p class="text-base text-gray-600">Self-Learning & Growth, Problem-Solving & Research</p>
+                <!-- Project: File Searcher -->
+                <div class="project-card p-8 rounded-2xl flex flex-col justify-between" data-category="systems">
+                    <div>
+                        <div class="text-[#F25623] mb-4"><i class="fas fa-folder-open text-2xl"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-2 uppercase"><a href="https://github.com/naiih001/file-searcher" target="_blank" rel="noopener noreferrer">File Searcher</a></h3>
+                        <p class="text-[#DEDEDE]/60 text-sm mb-6">A multi-threaded file search utility in C++ that recursively scans directories for patterns, utilizing std::thread for concurrency and std::filesystem for directory traversal to enable efficient local file searching.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[10px] uppercase font-mono text-[#4D4D4D]">
+                        <span>C++</span> <span>Multithreading</span> <span>std::thread</span> <span>std::filesystem</span> <span>Directory Traversal</span> <span>Pattern Matching</span> <span>Command-Line Utility</span>
+                    </div>
+                </div>
+
+                <!-- Project: Lock-Free Queue -->
+                <div class="project-card p-8 rounded-2xl flex flex-col justify-between" data-category="featured systems">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="text-[#F25623]"><i class="fas fa-microchip text-2xl"></i></div>
+                            <span class="text-[9px] text-[#F25623] border border-[#F25623]/30 px-2 py-0.5 rounded font-mono uppercase">Featured</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 uppercase"><a href="https://github.com/naiih001/lock-free-queue" target="_blank" rel="noopener noreferrer">Lock-Free Queue</a></h3>
+                        <p class="text-[#DEDEDE]/60 text-sm mb-6">A basic implementation of a lock-free queue in C++, designed for high-performance concurrent data access without mutexes, demonstrating advanced synchronization techniques for thread-safe operations. This highlights deep systems programming knowledge, setting you apart in concurrency topics often not covered until later years.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[10px] uppercase font-mono text-[#4D4D4D]">
+                        <span>C++</span> <span>Lock-Free Data Structures</span> <span>Concurrency</span> <span>Thread Safety</span> <span>Synchronization</span> <span>Performance Optimization</span>
+                    </div>
+                </div>
+
+                <!-- Project: CPP Shell -->
+                <div class="project-card p-8 rounded-2xl flex flex-col justify-between" data-category="systems">
+                    <div>
+                        <div class="text-[#F25623] mb-4"><i class="fas fa-terminal text-2xl"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-2 uppercase"><a href="https://github.com/naiih001/cpp-shell" target="_blank" rel="noopener noreferrer">CPP Shell</a></h3>
+                        <p class="text-[#DEDEDE]/60 text-sm mb-6">A custom shell implemented in C++, capable of executing commands, handling input/output, and managing processes, showcasing system-level programming and command parsing skills.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[10px] uppercase font-mono text-[#4D4D4D]">
+                        <span>C++</span> <span>Shell Implementation</span> <span>Command Parsing</span> <span>Process Management</span> <span>Input/Output Handling</span> <span>Systems Programming</span>
+                    </div>
+                </div>
+
+                <!-- Project: YTD -->
+                <div class="project-card p-8 rounded-2xl flex flex-col justify-between" data-category="systems">
+                    <div>
+                        <div class="text-[#F25623] mb-4"><i class="fab fa-youtube text-2xl"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-2 uppercase"><a href="https://github.com/naiih001/ytd" target="_blank" rel="noopener noreferrer">YTD</a></h3>
+                        <p class="text-[#DEDEDE]/60 text-sm mb-6">A simple CLI application in Go for downloading YouTube videos, focusing on command-line backend logic for URL handling, network operations, and file management using Go's standard library.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[10px] uppercase font-mono text-[#4D4D4D]">
+                        <span>Go</span> <span>CLI Application</span> <span>YouTube Downloader</span> <span>Network Requests</span> <span>File Handling</span> <span>Command-Line Tools</span>
+                    </div>
+                </div>
+
+                <!-- Project: Builders Hub -->
+                <div class="project-card p-8 rounded-2xl flex flex-col justify-between" data-category="web3">
+                    <div>
+                        <div class="text-[#F25623] mb-4"><i class="fab fa-ethereum text-2xl"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-2 uppercase"><a href="https://github.com/naiih001/builders-hub" target="_blank" rel="noopener noreferrer">Builders Hub</a></h3>
+                        <p class="text-[#DEDEDE]/60 text-sm mb-6">Forked repository for the Avalanche Builders Hub, hosting documentation, the Avalanche Academy, and an integrations directory for blockchain developers. Includes support for local development, static site generation, and contributions to Avalanche's ecosystem.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[10px] uppercase font-mono text-[#4D4D4D]">
+                        <span>Next.js</span> <span>TypeScript</span> <span>MDX</span> <span>Solidity</span> <span>Prisma</span> <span>Vercel</span> <span>Blockchain</span> <span>Web3 Documentation</span> <span>Avalanche</span>
+                    </div>
+                </div>
+
+                <!-- Project: Roll Dice Web3 -->
+                <div class="project-card p-8 rounded-2xl flex flex-col justify-between" data-category="web3">
+                    <div>
+                        <div class="text-[#F25623] mb-4"><i class="fas fa-dice text-2xl"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-2 uppercase"><a href="https://github.com/naiih001/roll-dice-web3" target="_blank" rel="noopener noreferrer">Roll Dice Web3</a></h3>
+                        <p class="text-[#DEDEDE]/60 text-sm mb-6">A web3-based dice rolling application, likely involving blockchain elements for decentralized randomness or gaming, built primarily with HTML for a simple interface.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[10px] uppercase font-mono text-[#4D4D4D]">
+                        <span>HTML</span> <span>Web3</span> <span>Blockchain Gaming</span> <span>Decentralized Applications</span>
+                    </div>
+                </div>
+
+                <!-- Project: Crypto Currency App -->
+                <div class="project-card p-8 rounded-2xl flex flex-col justify-between" data-category="web3">
+                    <div>
+                        <div class="text-[#F25623] mb-4"><i class="fas fa-coins text-2xl"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-2 uppercase"><a href="https://github.com/naiih001/crypto-currency-app" target="_blank" rel="noopener noreferrer">Crypto Currency App</a></h3>
+                        <p class="text-[#DEDEDE]/60 text-sm mb-6">An application focused on cryptocurrencies, potentially for tracking prices or displaying market data, developed using HTML as the primary technology.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[10px] uppercase font-mono text-[#4D4D4D]">
+                        <span>HTML</span> <span>Cryptocurrency</span> <span>Web3</span> <span>Market Data Display</span>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-        </section>
-
-        <!-- Education Section -->
-        <section id="education"
-            class="min-h-[30vh] bg-white/80 backdrop-blur-xl p-10 rounded-2xl shadow-2xl mb-16 border border-white/50">
-            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b pb-2">Education</h2>
+    <!-- Contact -->
+    <footer id="contact" class="py-20 px-6 border-t border-[#262626]">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
             <div>
-                <h3 class="text-2xl font-semibold text-gray-900">Bachelor's Degree in Computer Science</h3>
-                <p class="text-lg text-gray-700">Federal University of Minna, Niger, Nigeria</p>
+                <h2 class="text-3xl font-bold text-white mb-4">Interested in collaborating?</h2>
+                <p class="text-[#4D4D4D] max-w-sm">Open for Node.js architecture roles and Web3 development. Reach out via email or LinkedIn.</p>
             </div>
-        </section>
-    </main>
-
-    <footer class="bg-white/80 backdrop-blur-xl mt-16 py-8">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-center space-x-6">
-                <a href="mailto:isaachayab0@gmail.com" class="text-gray-500 hover:text-gray-700 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <span class="sr-only">Email</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
-                    </svg>
-                </a>
-                <a href="https://wa.me/2347076225974" class="text-gray-500 hover:text-gray-700 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <span class="sr-only">WhatsApp</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.38 1.25 4.85L2 22l5.25-1.38c1.47.79 3.1 1.25 4.85 1.25 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.09c-1.5 0-2.93-.4-4.19-1.13l-.3-.18-3.12.82.83-3.04-.2-.32a8.19 8.19 0 01-1.26-4.34c0-4.53 3.69-8.21 8.21-8.21 4.53 0 8.21 3.69 8.21 8.21s-3.68 8.21-8.21 8.21zm4.49-5.45c-.25-.12-1.47-.72-1.7-.81-.22-.08-.38-.12-.54.12-.16.25-.64.81-.79.97-.15.16-.3.18-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.66-1.22-1.47-1.36-1.72-.15-.25-.02-.38.1-.51.11-.11.25-.28.38-.42.12-.15.16-.25.25-.42.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42-.15 0-.3.02-.46.02-.16 0-.42.06-.64.3.22.25-.87.83-1.02 2.04-.15 1.2.64 2.39.74 2.55.1.16 1.47 2.26 3.55 3.14.5.22.9.35 1.2.45.5.15.95.13 1.3.08.4-.04 1.25-.51 1.42-.99.18-.48.18-.9.13-1s-.24-.22-.5-.35z"/>
-                    </svg>
-                </a>
-                <a href="https://github.com/ayo-69" class="text-gray-500 hover:text-gray-700 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <span class="sr-only">GitHub</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/>
-                    </svg>
-                </a>
-                <a href="https://twitter.com/isaac_hayab" class="text-gray-500 hover:text-gray-700 transition duration-150 ease-in-out hover:-translate-y-1">
-                    <span class="sr-only">X (formerly Twitter)</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                </a>
-            </div>
-            <div class="mt-8 text-center text-sm text-gray-500">
-                <p>&copy; 2025 Isaac Hayab. All rights reserved.</p>
+            <div class="flex space-x-6">
+                <a href="https://github.com/naiih001" class="text-2xl text-[#4D4D4D] hover:text-[#F25623]"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/naiih001" class="text-2xl text-[#4D4D4D] hover:text-[#F25623]"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/isaac_hayab" class="text-2xl text-[#4D4D4D] hover:text-[#F25623]"><i class="fab fa-twitter"></i></a>
+                <a href="mailto:isaachayab0@gmail.com" class="text-2xl text-[#4D4D4D] hover:text-[#F25623]"><i class="far fa-envelope"></i></a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling logic for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        // Terminal Animation
+        const terminalElement = document.getElementById('terminal-text');
+        const fullText = "npm run start:prod -- --config helix.json";
+        let charIndex = 0;
+
+        function typeEffect() {
+            if (charIndex < fullText.length) {
+                terminalElement.textContent += fullText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeEffect, 60);
+            }
+        }
+
+        // Project Filtering Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projects = document.querySelectorAll('.project-card');
+
+        const applyFilter = (filter) => {
+            projects.forEach(card => {
+                const categories = card.getAttribute('data-category');
+                if (filter === 'all' || categories.includes(filter)) {
+                    card.classList.remove('hidden-project');
+                } else {
+                    card.classList.add('hidden-project');
+                }
             });
-        });
-
-        // Form submission logic
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('contactForm');
-            const successMessage = document.getElementById('successMessage');
-
-            if (form && successMessage) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const budget = document.getElementById('budget').value;
-                    const message = document.getElementById('message').value;
-
-                    fetch('https://my-portfolio-vf6r.onrender.com/send-email', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ name, email, budget, message })
-                    })
-                        .then(response => response.text())
-                        .then(data => {
-                            console.log(data);
-                            // Simulate success: hide form, show message
-                            form.classList.add('hidden');
-                            successMessage.classList.remove('hidden');
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
-                });
-            }
-        });
-
-        // --- Three.js 3D Cube Animation ---
-
-        let scene, camera, renderer, cube, container;
-
-        function initCube() {
-            container = document.getElementById('cube-container');
-            if (!container) return;
-
-            const width = container.clientWidth;
-            const height = container.clientHeight;
-
-            // 1. Scene
-            scene = new THREE.Scene();
-
-            // 2. Camera
-            camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-            camera.position.z = 5;
-
-            // 3. Renderer
-            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(width, height);
-
-            // Set pixel ratio for sharp rendering on high-DPI screens
-            renderer.setPixelRatio(window.devicePixelRatio);
-
-            // Clear any existing children before appending
-            while (container.firstChild) {
-                container.firstChild.remove();
-            }
-            container.appendChild(renderer.domElement);
-
-            // 4. Geometry (Cube)
-            const geometry = new THREE.BoxGeometry(2, 2, 2);
-
-            // 5. Material (Transparent with Black Outline)
-            const material = new THREE.MeshBasicMaterial({
-                color: 0xffffff,
-                transparent: true,
-                opacity: 0.2, // Make it slightly visible/glassy
-                wireframe: false
-            });
-            cube = new THREE.Mesh(geometry, material);
-            scene.add(cube);
-
-            // 6. Edges (Black Outline)
-            const edges = new THREE.EdgesGeometry(geometry);
-            const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1f2937, linewidth: 2 }));
-            cube.add(line);
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            if (cube) {
-                // Rotate the cube continuously
-                cube.rotation.x += 0.005;
-                cube.rotation.y += 0.005;
-            }
-
-            if (renderer) {
-                renderer.render(scene, camera);
-            }
-        }
-
-        function onWindowResize() {
-            if (container && camera && renderer) {
-                const width = container.clientWidth;
-                const height = container.clientHeight;
-
-                camera.aspect = width / height;
-                camera.updateProjectionMatrix();
-                renderer.setSize(width, height);
-            }
-        }
-
-        window.addEventListener('resize', onWindowResize, false);
-
-        // Start animation on window load
-        window.onload = function () {
-            initCube();
-            animate();
         };
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
+                
+                // UI: Update button states
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-[#F25623]', 'text-[#171717]', 'font-bold');
+                    b.classList.add('text-[#4D4D4D]', 'hover:text-white');
+                });
+                btn.classList.add('bg-[#F25623]', 'text-[#171717]', 'font-bold');
+                btn.classList.remove('text-[#4D4D4D]', 'hover:text-white');
+
+                applyFilter(filter);
+            });
+        });
+
+        // Initial view: Featured
+        window.addEventListener('DOMContentLoaded', () => {
+            applyFilter('featured');
+        });
+
+        // Navigation UI
+        const nav = document.getElementById('navbar');
+        window.onscroll = () => {
+            if (window.scrollY > 40) {
+                nav.classList.add('glass-nav', 'py-4');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.remove('glass-nav', 'py-4');
+                nav.classList.add('py-6');
+            }
+        };
+
+        
+
+        // Mobile Menu
+
+        const menuBtn = document.getElementById('menu-toggle');
+
+        const closeBtn = document.getElementById('close-menu');
+
+        const menu = document.getElementById('mobile-menu');
+
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        
+
+        [menuBtn, closeBtn].forEach(el => el.addEventListener('click', () => menu.classList.toggle('active')));
+
+
+
+        mobileLinks.forEach(link => {
+
+            link.addEventListener('click', () => {
+
+                if (menu.classList.contains('active')) {
+
+                    menu.classList.remove('active');
+
+                }
+
+            });
+
+        });
+        window.onload = typeEffect;
+        
+        // Theme Toggle Logic
+        const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
+        const body = document.body;
+
+        // Function to apply theme
+        const applyTheme = (theme) => {
+            if (theme === 'light') {
+                body.classList.add('light-mode');
+                themeToggleBtns.forEach(btn => btn.innerHTML = '<i class="fas fa-moon"></i>');
+            } else {
+                body.classList.remove('light-mode');
+                themeToggleBtns.forEach(btn => btn.innerHTML = '<i class="fas fa-sun"></i>');
+            }
+        };
+
+        // Check for saved theme in localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else {
+            // Default to dark mode
+            applyTheme('dark');
+        }
+
+        // Event listener for the toggle buttons
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                
+                applyTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        });
     </script>
-
 </body>
-
 </html>

@@ -1,51 +1,71 @@
-# Hi there, I'm Hayab Nommoh Isaac 👋
+# Isaac Hayab | Software Engineer & Web3 Developer
 
-I'm a Backend Engineer with hands-on experience in building and deploying RESTful APIs using Node.js (Express) and MongoDB. I am experienced in authentication, role-based access control, API design, and backend architecture. I'm also familiar with deploying backend services to AWS and other cloud platforms. I have a strong foundation in scalable backend systems and production-ready development.
-
----
-
-### 🚀 Professional Skills
-
-**Backend Development:**
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
-
-**Databases:**
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
-
-**DevOps & Cloud:**
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![CI/CD](https://img.shields.io/badge/CI%2FCD-232F3E?style=for-the-badge&logo=github-actions&logoColor=white)
-![Railway](https://img.shields.io/badge/Railway-0B0D12?style=for-the-badge&logo=railway&logoColor=white)
-![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)
-![Fly.io](https://img.shields.io/badge/Fly.io-8A43E6?style=for-the-badge&logo=fly&logoColor=white)
-
-**Other:**
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+<p align="center">
+  <a href="https://naiih001.github.io/my-portfolio/">
+    <img src="https://img.shields.io/badge/Portfolio-F25623?style=for-the-badge&logo=user&logoColor=white" alt="Portfolio">
+  </a>
+  <a href="https://github.com/naiih001">
+    <img src="https://github-readme-stats.vercel.app/api?username=naiih001&show_icons=true&theme=dark&count_private=true" alt="GitHub Stats">
+  </a>
+  <a href="https://github.com/naiih001">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs?username=naiih001&theme=dark&layout=compact" alt="Top Languages">
+  </a>
+  <a href="https://github.com/naiih001">
+    <img src="https://streak-stats.demolab.com/?user=naiih001&theme=dark" alt="GitHub Streak">
+  </a>
+</p>
 
 ---
 
-### 💻 Work Experience
+## 👨‍💻 About Me
 
-**Independent Backend Engineer** (Freelance, Remote | Jan 2024 - Present)
-- Built a real-time chat service with WebSockets, MongoDB, and AWS EC2 for high concurrency.
-- Developed Expense Tracker API with JWT auth, RBAC, Redis caching, and optimized queries.
-- Applied security best practices, CI/CD pipelines, and AWS S3 for deployment and storage.
+I build robust Node.js backends and decentralized systems. As a Computer Science student, I'm passionate about mathematics, business building, and shipping clean code using Ubuntu & Helix.
 
-**Web3 Developer** (Independent Projects, Remote | 2023 - Present)
-- Built a secure escrow platform supporting crypto and x402 payments.
-- Implemented Solidity smart contracts for automated fund release and dispute handling.
-- Integrated wallet authentication (MetaMask) and blockchain APIs for a seamless user experience.
+- 🟢 **Status:** Available for Web3 & Node.js Projects
+- 📄 **Resume:** [Download CV](Isaac%20Hayab%20CV.pdf)
 
 ---
 
-### 📫 How to Reach Me
+## 🛠️ My Tech Stack
 
-- **Portfolio:** [portfolio.isaac.nh](https://portfolio.isaac.nh)
-- **Email:** [isaachayabo@gmail.com](mailto:isaachayabo@gmail.com)
+### Backend
+- **Languages:** Node.js / TypeScript, Python, Go, C++
+- **Frameworks & Libraries:** Express.js, NestJS, Gin, cpp-httplib
+- **Databases:** PostgreSQL, MongoDB, Redis
+- **Other:** Docker, RESTful APIs, gRPC, Solidity, Web3
+
+### Frontend
+- **Languages:** JavaScript, HTML, CSS
+- **Frameworks & Libraries:** React, Next.js
+
+---
+
+## 🚀 Technical Portfolio
+
+A collection of systems, APIs, and decentralized tools.
+
+- [**EduTrackr Backend**](https://github.com/naiih001/edutrackr-backend) - A TypeScript and Express.js API for managing student grades, authentication, and records.
+- [**E-commerce Backend**](https://github.com/naiih001/e-commerce-backend) - A RESTful API built with Go and the Gin framework for a performant online store backend.
+- [**CPP Notes API**](https://github.com/naiih001/cpp-notes-api) - A simple note-taking API developed using cpp-httplib in C++.
+- [**Blogging Platform**](https://github.com/naiih001/blogging-platform) - A backend service in Go for a blogging platform.
+- [**TCP Server**](https://github.com/naiih001/tcp-server) - A concurrent TCP server in C++ that handles multiple client connections.
+- [**Trading Bot**](https://github.com/naiih001/trading-bot) - A Go-based trading bot for back-testing strategies on historical price data.
+- [**Expense Tracker**](https://github.com/naiih001/expense-tracker) - A RESTful API in Go for managing personal expenses.
+- [**File Searcher**](https://github.com/naiih001/file-searcher) - A multi-threaded file search utility in C++.
+- [**Lock-Free Queue**](https://github.com/naiih001/lock-free-queue) - A basic implementation of a lock-free queue in C++.
+- [**CPP Shell**](https://github.com/naiih001/cpp-shell) - A custom shell implemented in C++.
+- [**YTD**](https://github.com/naiih001/ytd) - A simple CLI application in Go for downloading YouTube videos.
+- [**Builders Hub**](https://github.com/naiih001/builders-hub) - Forked repository for the Avalanche Builders Hub.
+- [**Roll Dice Web3**](https://github.com/naiih001/roll-dice-web3) - A web3-based dice rolling application.
+- [**Crypto Currency App**](https://github.com/naiih001/crypto-currency-app) - An application focused on cryptocurrencies.
+
+---
+
+## 📫 Connect with Me
+
+<p align="center">
+  <a href="https://github.com/naiih001"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"></a>
+  <a href="https://www.linkedin.com/in/naiih001"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+  <a href="https://x.com/isaac_hayab"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white"></a>
+  <a href="mailto:isaachayab0@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"></a>
+</p>
