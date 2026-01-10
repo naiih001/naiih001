@@ -2,7 +2,7 @@
 
 <p align="center">
   <!-- Portfolio Badge -->
-  <a href="https://naiih001.github.io/my-portfolio/">
+  <a href="https://naiih001.github.io/">
     <img src="https://img.shields.io/badge/Portfolio-FF4500?style=for-the-badge&logo=appveyor&logoColor=white" alt="My Portfolio">
   </a>
  
