@@ -5,32 +5,39 @@
   <a href="https://naiih001.github.io/my-portfolio/">
     <img src="https://img.shields.io/badge/Portfolio-FF4500?style=for-the-badge&logo=appveyor&logoColor=white" alt="My Portfolio">
   </a>
+ 
+ <p align="center">
   <!-- GitHub Stats -->
   <a href="https://github.com/naiih001">
+   <a href="https://github.com/naiih001">
     <img src="https://github-readme-stats.vercel.app/api?username=naiih001&show_icons=true&theme=radical&count_private=true" alt="Isaac's GitHub Stats">
   </a>
+   </a>
   <!-- Top Languages -->
   <a href="https://github.com/naiih001">
+   <a href="https://github.com/naiih001">
     <img src="https://github-readme-stats.vercel.app/api/top-langs?username=naiih001&theme=radical&layout=compact" alt="Isaac's Top Languages">
   </a>
+   </a>
   <!-- GitHub Streak -->
   <a href="https://github.com/naiih001">
+   <a href="https://github.com/naiih001">
     <img src="https://streak-stats.demolab.com/?user=naiih001&theme=radical" alt="GitHub Streak">
   </a>
 </p>
  
-+<p align="center">
-+  <!-- GitHub Activity Graph -->
-+  <a href="https://github.com/naiih001">
-+    <img src="https://github-readme-activity-graph.vercel.app/graph?username=naiih001&theme=github-dark&hide_border=true" alt="Isaac's GitHub Activity Graph" />
-+  </a>
-+</p>
-+
-+---
-+ 
+<p align="center">
+   </a>
+  <!-- GitHub Activity Graph -->
+  <a href="https://github.com/naiih001">
+   <a href="https://github.com/naiih001">
+    <img src="https://github-readme-activity-graph.vercel.app/graph?username=naiih001&theme=github-dark&hide_border=true" alt="Isaac's GitHub Activity Graph" />
+  </a>
+</p>
+
+
 + ## 🚀 About Me
-+ 
-+ I'm a backend developer focused on Node.js, systems thinking, and performance. I care deeply about clear APIs, predictable behavior, and understanding what’s happening under the hood, not just making things “work”. My passion lies in building robust, scalable, and efficient backend systems that stand the test of time.
+I'm a backend developer focused on Node.js, systems thinking, and performance. I care deeply about clear APIs, predictable behavior, and understanding what’s happening under the hood, not just making things “work”. My passion lies in building robust, scalable, and efficient backend systems that stand the test of time.
 
 -   🟢 **Status:** Available for Web3 & Node.js Projects
 -   📄 **Resume:** [Download CV](Isaac%20Hayab%20CV.pdf)
@@ -98,4 +105,6 @@ A collection of systems, APIs, and decentralized tools I've built:
   <a href="mailto:isaachayab0@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"></a>
   <a href="https://wa.me/+2348028641942"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"></a>
   <a href="https://t.me/isaac_hayab"><img src="https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white"></a>
+</p>
+</a>
 </p>
