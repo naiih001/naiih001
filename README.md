@@ -1,110 +1,92 @@
-# Hey there, I'm Isaac Hayab (he/him) 👋
+<div align="center">
 
-<p align="center">
-  <!-- Portfolio Badge -->
-  <a href="https://naiih001.github.io/">
-    <img src="https://img.shields.io/badge/Portfolio-FF4500?style=for-the-badge&logo=appveyor&logoColor=white" alt="My Portfolio">
-  </a>
- 
- <p align="center">
-  <!-- GitHub Stats -->
-  <a href="https://github.com/naiih001">
-   <a href="https://github.com/naiih001">
-    <img src="https://github-readme-stats.vercel.app/api?username=naiih001&show_icons=true&theme=radical&count_private=true" alt="Isaac's GitHub Stats">
-  </a>
-   </a>
-  <!-- Top Languages -->
-  <a href="https://github.com/naiih001">
-   <a href="https://github.com/naiih001">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs?username=naiih001&theme=radical&layout=compact" alt="Isaac's Top Languages">
-  </a>
-   </a>
-  <!-- GitHub Streak -->
-  <a href="https://github.com/naiih001">
-   <a href="https://github.com/naiih001">
-    <img src="https://streak-stats.demolab.com/?user=naiih001&theme=radical" alt="GitHub Streak">
-  </a>
-</p>
- 
-<p align="center">
-   </a>
-  <!-- GitHub Activity Graph -->
-  <a href="https://github.com/naiih001">
-   <a href="https://github.com/naiih001">
-    <img src="https://github-readme-activity-graph.vercel.app/graph?username=naiih001&theme=github-dark&hide_border=true" alt="Isaac's GitHub Activity Graph" />
-  </a>
-</p>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0D1117&height=160&section=header&text=naiih001&fontSize=62&fontColor=C9B99A&fontAlignY=42&desc=Backend%20Engineer%20%7C%20Systems%20Builder%20%7C%20Web3%20Dev&descAlignY=64&descSize=15&descColor=8B7355" />
 
+<img src="https://readme-typing-svg.herokuapp.com?font=Cinzel&size=14&duration=3000&pause=1200&color=C9B99A&center=true&vCenter=true&width=560&lines=Building+systems+that+endure;Distributed+queues+%7C+File+systems+%7C+TCP+servers;From+C%2B%2B+sockets+to+Web3+protocols;CS+%40+FUT+Minna+%E2%80%94+Ship+it.+Optimize+it." />
 
-+ ## 🚀 About Me
-I'm a backend developer focused on Node.js, systems thinking, and performance. I care deeply about clear APIs, predictable behavior, and understanding what’s happening under the hood, not just making things “work”. My passion lies in building robust, scalable, and efficient backend systems that stand the test of time.
+<br/>
 
--   🟢 **Status:** Available for Web3 & Node.js Projects
--   📄 **Resume:** [Download CV](Isaac%20Hayab%20CV.pdf)
+[![Portfolio](https://img.shields.io/badge/Portfolio-0D1117?style=for-the-badge&logo=appveyor&logoColor=C9B99A)](https://naiih001.github.io)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0D1117?style=for-the-badge&logo=linkedin&logoColor=C9B99A)](https://linkedin.com/in/naiih001)
+[![𝕏](https://img.shields.io/badge/%F0%9D%95%8F-0D1117?style=for-the-badge&logo=x&logoColor=C9B99A)](https://x.com/isaac_hayab)
+[![Email](https://img.shields.io/badge/Email-0D1117?style=for-the-badge&logo=gmail&logoColor=C9B99A)](mailto:isaachayab0@gmail.com)
+
+</div>
 
 ---
 
-## 🛠️ My Tech Stack
+## ![](https://img.shields.io/badge/Ι-C9B99A?style=flat-square&labelColor=0D1117) About
 
-A snapshot of the technologies and tools I frequently work with:
+I build backend systems — not just APIs that return JSON, but systems that handle **load**, **fail gracefully**, and make sense **architecturally**. I care about what happens under the hood: memory, concurrency, protocol design.
 
-### Backend & Core
--   **Languages:** Node.js, Golang, Python, C++, Solidity
--   **Frameworks & Libraries:** Express.js, NestJS, Gin, cpp-httplib
--   **APIs & Communication:** REST APIs, WebSockets, gRPC, Microservices
--   **Concepts:** Authentication, RBAC (Role-Based Access Control), System Design, Performance Optimization
-
-### Databases & Caching
--   **Relational:** PostgreSQL, MySQL, SQLite
--   **NoSQL:** MongoDB
--   **Caching:** Redis
-
-### Cloud, DevOps & Tools
--   **Cloud Platforms:** AWS (EC2, S3)
--   **Deployment & Orchestration:** Docker, Kubernetes (basic familiarity), CI/CD practices
--   **Runtimes & OS:** Linux
--   **PaaS:** Railway, Render, Fly.io
--   **Version Control:** Git
-
-### Web3 & Blockchain
--   **Blockchain:** Web3 APIs, Smart Contracts
-
-### Frontend (Familiarity)
--   **Frameworks:** React.js, Next.js
--   **Languages:** JavaScript, HTML, CSS
+- ▸ **Currently:** CS student @ Federal University of Technology, Minna
+- ▸ **Core:** Distributed systems, backend APIs, low-level C++ & systems programming
+- ▸ **Web3:** BOB L2 ecosystem, smart contracts, decentralized protocols
+- ▸ **Beyond code:** Systems thinking, CS theory, and bits of philosophy between deploys
+- ▸ 🟢 **Status:** Open to backend & Web3 internship roles
 
 ---
 
-## 🌟 Technical Portfolio
+## ![](https://img.shields.io/badge/ΙΙ-C9B99A?style=flat-square&labelColor=0D1117) The Pillars — Tech Stack
 
-A collection of systems, APIs, and decentralized tools I've built:
+<div align="center">
 
--   [**EduTrackr Backend**](https://github.com/naiih001/edutrackr-backend) - A TypeScript and Express.js API for managing student grades, authentication, and records.
--   [**E-commerce Backend**](https://github.com/naiih001/e-commerce-backend) - A RESTful API built with Go and the Gin framework for a performant online store backend.
--   [**CPP Notes API**](https://github.com/naiih001/cpp-notes-api) - A simple note-taking API developed using cpp-httplib in C++.
--   [**Blogging Platform**](https://github.com/naiih001/blogging-platform) - A backend service in Go for a blogging platform.
--   [**TCP Server**](https://github.com/naiih001/tcp-server) - A concurrent TCP server in C++ that handles multiple client connections.
--   [**Trading Bot**](https://github.com/naiih001/trading-bot) - A Go-based trading bot for back-testing strategies on historical price data.
--   [**Expense Tracker**](https://github.com/naiih001/expense-tracker) - A RESTful API in Go for managing personal expenses.
--   [**File Searcher**](https://github.com/naiih001/file-searcher) - A multi-threaded file search utility in C++.
--   [**Lock-Free Queue**](https://github.com/naiih001/lock-free-queue) - A basic implementation of a lock-free queue in C++.
--   [**CPP Shell**](https://github.com/naiih001/cpp-shell) - A custom shell implemented in C++.
--   [**YTD**](https://github.com/naiih001/ytd) - A simple CLI application in Go for downloading YouTube videos.
--   [**Builders Hub**](https://github.com/naiih001/builders-hub) - Forked repository for the Avalanche Builders Hub.
--   [**Roll Dice Web3**](https://github.com/naiih001/roll-dice-web3) - A web3-based dice rolling application.
--   [**Crypto Currency App**](https://github.com/naiih001/crypto-currency-app) - An application focused on cryptocurrencies.
+### Λ Backend & Systems
+![Node.js](https://img.shields.io/badge/Node.js-0D1117?style=for-the-badge&logo=node.js&logoColor=C9B99A)
+![TypeScript](https://img.shields.io/badge/TypeScript-0D1117?style=for-the-badge&logo=typescript&logoColor=C9B99A)
+![Go](https://img.shields.io/badge/Go-0D1117?style=for-the-badge&logo=go&logoColor=C9B99A)
+![C++](https://img.shields.io/badge/C++-0D1117?style=for-the-badge&logo=cplusplus&logoColor=C9B99A)
+![Express](https://img.shields.io/badge/Express-0D1117?style=for-the-badge&logo=express&logoColor=C9B99A)
+![Fastify](https://img.shields.io/badge/Fastify-0D1117?style=for-the-badge&logo=fastify&logoColor=C9B99A)
+![NestJS](https://img.shields.io/badge/NestJS-0D1117?style=for-the-badge&logo=nestjs&logoColor=C9B99A)
+
+### Λ Data & Infrastructure
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-0D1117?style=for-the-badge&logo=postgresql&logoColor=C9B99A)
+![MongoDB](https://img.shields.io/badge/MongoDB-0D1117?style=for-the-badge&logo=mongodb&logoColor=C9B99A)
+![Redis](https://img.shields.io/badge/Redis-0D1117?style=for-the-badge&logo=redis&logoColor=C9B99A)
+![Docker](https://img.shields.io/badge/Docker-0D1117?style=for-the-badge&logo=docker&logoColor=C9B99A)
+![Prisma](https://img.shields.io/badge/Prisma-0D1117?style=for-the-badge&logo=prisma&logoColor=C9B99A)
+![AWS](https://img.shields.io/badge/AWS-0D1117?style=for-the-badge&logo=amazon-aws&logoColor=C9B99A)
+
+### Λ Web3 & Blockchain
+![Solidity](https://img.shields.io/badge/Solidity-0D1117?style=for-the-badge&logo=solidity&logoColor=C9B99A)
+![Ethereum](https://img.shields.io/badge/Ethereum-0D1117?style=for-the-badge&logo=ethereum&logoColor=C9B99A)
+![Web3](https://img.shields.io/badge/Web3.js-0D1117?style=for-the-badge&logo=web3.js&logoColor=C9B99A)
+
+</div>
 
 ---
 
-## 📫 Connect with Me
+## ![](https://img.shields.io/badge/ΙΙΙ-C9B99A?style=flat-square&labelColor=0D1117) Built & Shipped
 
-<p align="center">
-  <a href="https://github.com/naiih001"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"></a>
-  <a href="https://www.linkedin.com/in/naiih001"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"></a>
-  <a href="https://x.com/hayab_isaa71697"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white"></a>
-  <a href="mailto:isaachayab0@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"></a>
-  <a href="https://wa.me/+2348028641942"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"></a>
-  <a href="https://t.me/isaac_hayab"><img src="https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white"></a>
-</p>
-</a>
-</p>
+| Project | Stack | What it does |
+|---------|-------|--------------|
+| [**jobqueue**](https://github.com/naiih001/jobqueue) | `BullMQ` `Fastify` `Redis` `Prisma` `TypeScript` `Docker` | Distributed job queue with worker pools, retries & job persistence |
+| [**dropbox-clone-api**](https://github.com/naiih001/dropbox-clone-api) | `Node.js` `Express` `MongoDB` `MinIO` `Docker` | File storage backend — auth, upload, retrieval, fully containerized |
+| [**tcp-server**](https://github.com/naiih001/tcp-server) | `C++` `std::thread` `mutexes` | Concurrent TCP server handling multiple clients with thread safety |
+| [**lock-free-queue**](https://github.com/naiih001/lock-free-queue) | `C++` `atomics` | Lock-free queue — no mutexes, just atomic operations |
+| [**cpp-shell**](https://github.com/naiih001/cpp-shell) | `C++` | Custom UNIX shell — command parsing, execution, piping |
+| [**e-commerce-backend**](https://github.com/naiih001/e-commerce-backend) | `Go` `Gin` `PostgreSQL` | RESTful store backend — auth, products, order management |
+| [**BTC DeFi Dashboard**](https://github.com/naiih001) | `Svelte` `Node.js` `BOB SDK` | Beginner-friendly Bitcoin DeFi interface on the BOB L2 |
+| [**roll-dice-web3**](https://github.com/naiih001/roll-dice-web3) | `Solidity` `Web3.js` | On-chain dice game — randomness via smart contracts |
+
+---
+
+## ![](https://img.shields.io/badge/ΙV-C9B99A?style=flat-square&labelColor=0D1117) Stats
+
+<div align="center">
+
+[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=naiih001&show_icons=true&theme=radical&count_private=true&icon_color=C9B99A&title_color=C9B99A&text_color=8B7355&bg_color=0D1117&border_color=2A2A2A)](https://github.com/naiih001)
+[![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=naiih001&theme=radical&layout=compact&title_color=C9B99A&text_color=8B7355&bg_color=0D1117&border_color=2A2A2A)](https://github.com/naiih001)
+
+[![GitHub Streak](https://streak-stats.demolab.com/?user=naiih001&theme=radical&background=0D1117&ring=C9B99A&fire=C9B99A&currStreakLabel=C9B99A&sideLabels=8B7355&dates=8B7355&border=2A2A2A)](https://github.com/naiih001)
+
+</div>
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0D1117&height=100&section=footer&text=%F0%9D%98™ecursively%20building.&fontSize=14&fontColor=8B7355&fontAlignY=65" />
+
+</div>
