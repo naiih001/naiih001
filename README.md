@@ -74,17 +74,9 @@ I build backend systems — not just APIs that return JSON, but systems that han
 ## ![](https://img.shields.io/badge/ΙV-C9B99A?style=flat-square&labelColor=0D1117) Stats
 
 <div align="center">
-[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=naiih001&show_icons=true&theme=radical&count_private=true&icon_color=C9B99A&title_color=C9B99A&text_color=8B7355&bg_color=0D1117&border_color=2A2A2A)](https://github.com/naiih001)
-[![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=naiih001&theme=radical&layout=compact&title_color=C9B99A&text_color=8B7355&bg_color=0D1117&border_color=2A2A2A)](https://github.com/naiih001)
 
 [![GitHub Streak](https://streak-stats.demolab.com/?user=naiih001&theme=radical&background=0D1117&ring=C9B99A&fire=C9B99A&currStreakLabel=C9B99A&sideLabels=8B7355&dates=8B7355&border=2A2A2A)](https://github.com/naiih001)
 
 </div>
 
 ---
-
-<div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0D1117&height=100&section=footer&text=%F0%9D%98™ecursively%20building.&fontSize=14&fontColor=8B7355&fontAlignY=65" />
-
-</div>
