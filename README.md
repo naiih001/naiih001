@@ -1,14 +1,13 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0D1117&height=160&section=header&text=naiih001&fontSize=62&fontColor=C9B99A&fontAlignY=42&desc=Backend%20Engineer%20%7C%20Systems%20Builder%20%7C%20Web3%20Dev&descAlignY=64&descSize=15&descColor=8B7355" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0D1117&height=160&section=header&text=naiih001&fontSize=62&fontColor=C9B99A&fontAlignY=42&desc=Backend%20Engineer%20%7C%20Systems%20Engineer%20%7C%20Web3%20Dev&descAlignY=64&descSize=15&descColor=8B7355" />
 
 <img src="https://readme-typing-svg.herokuapp.com?font=Cinzel&size=14&duration=3000&pause=1200&color=C9B99A&center=true&vCenter=true&width=560&lines=Building+systems+that+endure;Distributed+queues+%7C+File+systems+%7C+TCP+servers;From+C%2B%2B+sockets+to+Web3+protocols;CS+%40+FUT+Minna+%E2%80%94+Ship+it.+Optimize+it." />
 
 <br/>
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-0D1117?style=for-the-badge&logo=appveyor&logoColor=C9B99A)](https://naiih001.github.io)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0D1117?style=for-the-badge&logo=linkedin&logoColor=C9B99A)](https://linkedin.com/in/naiih001)
-[![𝕏](https://img.shields.io/badge/%F0%9D%95%8F-0D1117?style=for-the-badge&logo=x&logoColor=C9B99A)](https://x.com/isaac_hayab)
+[![𝕏](https://img.shields.io/badge/%F0%9D%95%8F-0D1117?style=for-the-badge&logo=x&logoColor=C9B99A)](https://x.com/naiih001)
 [![Email](https://img.shields.io/badge/Email-0D1117?style=for-the-badge&logo=gmail&logoColor=C9B99A)](mailto:isaachayab0@gmail.com)
 
 </div>
@@ -75,7 +74,6 @@ I build backend systems — not just APIs that return JSON, but systems that han
 ## ![](https://img.shields.io/badge/ΙV-C9B99A?style=flat-square&labelColor=0D1117) Stats
 
 <div align="center">
-
 [![GitHub Stats](https://github-readme-stats.vercel.app/api?username=naiih001&show_icons=true&theme=radical&count_private=true&icon_color=C9B99A&title_color=C9B99A&text_color=8B7355&bg_color=0D1117&border_color=2A2A2A)](https://github.com/naiih001)
 [![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=naiih001&theme=radical&layout=compact&title_color=C9B99A&text_color=8B7355&bg_color=0D1117&border_color=2A2A2A)](https://github.com/naiih001)
 
