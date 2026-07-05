@@ -56,6 +56,17 @@ I build backend systems — not just APIs that return JSON, but systems that han
 
 ---
 
+<div align="center">
+  <a href="https://commit-history.com/naiih001">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://commit-history.com/embed/naiih001?theme=dark" />
+      <img alt="Britinogn's commit history" src="https://commit-history.com/embed/naiih001" />
+    </picture>
+  </a>
+</div>
+
+---
+
 ## ![](https://img.shields.io/badge/ΙΙΙ-C9B99A?style=flat-square&labelColor=0D1117) Built & Shipped
 
 | Project | Stack | What it does |
